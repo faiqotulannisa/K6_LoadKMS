@@ -1,0 +1,54 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: ./script.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 3 max VUs, 31s max duration (incl. graceful stop):
+              * load_test: Up to 3 looping VUs for 1s over 1 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+CSV,2026-02-16T15:00:51.413Z,2,0,200,50.487166,771cf1b3-12f0-47b3-abbe-0b00ac22c903,Sign hash successfully,"{""code"":200,""signature"":""tvXyziPbkRLX7nyP7nDhbvYw/5//9wlzFCro/fLTERKm9H4Otfld+XGOLAVc3ZElKjYsKnIs3x/CuLCVxdE09fRHHCOL5yRoq4OxHPvVGmkfR8PRwYV78g7R10VUmat5/NjxtvHKPYyBW/I9Q+9XplQ3pYUd1ouT/ZFt7odgg+wLhLvcRKauM+m7qxS0KBmgqNwpBqhfgrxMyNznhVke11IIOSxK4i/Q73cm993u9JzS7AYNApb0XNOR7Ulbn6AbB1675+mWXYEh8lmSQ2oySrvjbbRDLs2j4T4WuNCSu1qAEXtpCTmlFH3nBFTl0w51U8KM+trcnvzSLVZUf6FqHw=="",""trx"":""771cf1b3-12f0-47b3-abbe-0b00ac22c903"",""message"":""Sign hash successfully"",""timestamp"":1771228854095}"
+CSV,2026-02-16T15:00:51.755Z,3,0,200,61.575778,1e3e82c2-fa0a-42e9-9c67-7aab2282c3e3,Sign hash successfully,"{""code"":200,""signature"":""tvXyziPbkRLX7nyP7nDhbvYw/5//9wlzFCro/fLTERKm9H4Otfld+XGOLAVc3ZElKjYsKnIs3x/CuLCVxdE09fRHHCOL5yRoq4OxHPvVGmkfR8PRwYV78g7R10VUmat5/NjxtvHKPYyBW/I9Q+9XplQ3pYUd1ouT/ZFt7odgg+wLhLvcRKauM+m7qxS0KBmgqNwpBqhfgrxMyNznhVke11IIOSxK4i/Q73cm993u9JzS7AYNApb0XNOR7Ulbn6AbB1675+mWXYEh8lmSQ2oySrvjbbRDLs2j4T4WuNCSu1qAEXtpCTmlFH3nBFTl0w51U8KM+trcnvzSLVZUf6FqHw=="",""trx"":""1e3e82c2-fa0a-42e9-9c67-7aab2282c3e3"",""message"":""Sign hash successfully"",""timestamp"":1771228854437}"
+
+running (01.0s), 2/3 VUs, 0 complete and 0 interrupted iterations
+load_test   [  99% ] 2/3 VUs  1.0s/1.0s
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✓ 'p(95)<2000' p(95)=61.02ms
+
+
+  █ TOTAL RESULTS 
+
+    CUSTOM
+    request_log....................: avg=56.03ms min=50.48ms med=56.03ms max=61.57ms p(90)=60.46ms p(95)=61.02ms
+
+    HTTP
+    http_req_duration..............: avg=56.03ms min=50.48ms med=56.03ms max=61.57ms p(90)=60.46ms p(95)=61.02ms
+      { expected_response:true }...: avg=56.03ms min=50.48ms med=56.03ms max=61.57ms p(90)=60.46ms p(95)=61.02ms
+    http_req_failed................: 0.00%  0 out of 2
+    http_reqs......................: 2      1.147531/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.07s   min=1.06s   med=1.07s   max=1.07s   p(90)=1.07s   p(95)=1.07s  
+    iterations.....................: 2      1.147531/s
+    vus............................: 2      min=2      max=2
+    vus_max........................: 3      min=3      max=3
+
+    NETWORK
+    data_received..................: 15 kB  8.8 kB/s
+    data_sent......................: 7.3 kB 4.2 kB/s
+
+
+
+
+running (01.7s), 0/3 VUs, 2 complete and 0 interrupted iterations
+load_test ✓ [ 100% ] 0/3 VUs  1s

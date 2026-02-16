@@ -6,16 +6,31 @@ const requestLog = new Trend('request_log', true);
 
 export const options = {
   scenarios: {
-    tps_test: {
-      executor: 'constant-arrival-rate',
-      rate: 10,                 // 50 transaksi / detik
-      timeUnit: '1s',
-      duration: '1m',
-      preAllocatedVUs: 20,      // VU yg disiapkan
-      maxVUs: 100,              // batas atas
-    }
-  }
+    load_test: {
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '30s', target: 3 }, // ramp up ke 200 VUs dalam 30 detik
+      ],
+    },
+  },
+  thresholds: {
+    http_req_duration: ['p(95)<2000'], // 95% request < 2000 ms
+  },
 };
+
+//export const options = {
+  //scenarios: {
+    //tps_test: {
+      //executor: 'constant-arrival-rate',
+      //rate: 10,                 // 10 transaksi / detik
+      //timeUnit: '1s',
+      //duration: '1m',
+      //preAllocatedVUs: 20,      // VU yg disiapkan
+      //maxVUs: 100,              // batas atas
+    //}
+  //}
+//};
 
 function csvEscape(value) {
   if (value === null || value === undefined) return '';
