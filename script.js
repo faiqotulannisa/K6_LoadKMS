@@ -6,15 +6,15 @@ const requestLog = new Trend('request_log', true);
 
 export const options = {
   scenarios: {
-    load_test: {
-      executor: 'ramping-vus',
-      startVUs: 0,
-      stages: [{ duration: '1s', target: 10 }],
-    },
-  },
-  thresholds: {
-    http_req_duration: ['p(95)<2000'],
-  },
+    tps_test: {
+      executor: 'constant-arrival-rate',
+      rate: 10,                 // 50 transaksi / detik
+      timeUnit: '1s',
+      duration: '1m',
+      preAllocatedVUs: 20,      // VU yg disiapkan
+      maxVUs: 100,              // batas atas
+    }
+  }
 };
 
 function csvEscape(value) {
@@ -25,13 +25,13 @@ function csvEscape(value) {
 }
 
 export default function () {
-  const url = 'https://api-kms.mesign.id/api/v1/signhash';
+  const url = 'https://api-kms.ezsign.id/api/v1/signhash';
 
   const payload = JSON.stringify({
-    keyId: '338ae841-f4fb-40dd-a1cc-0ee83c147b1a',
+    keyId: '67a94a1f-9600-42bc-9874-7f0d794c9a7e',
     data: 'MEECAQEwMTANBglghkgBZQMEAgEFAAQgpJXDoCZZ5aja0OBUmcSCPrGy/ay1aKe69l55T42XfbwCBgGLjd5vqQEB/w==',
     encryptedKey:
-      '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',
+      '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',
   });
 
   const params = {
