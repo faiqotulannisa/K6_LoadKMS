@@ -10,7 +10,7 @@ export const options = {
       executor: 'ramping-vus',
       startVUs: 0,
       stages: [
-        { duration: '30s', target: 200 }, // ramp up ke 200 VUs dalam 30 detik
+        { duration: '30s', target: 2000 }, // ramp up ke 200 VUs dalam 30 detik
       ],
     },
   },
